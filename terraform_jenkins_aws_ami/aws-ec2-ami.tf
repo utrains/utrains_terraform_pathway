@@ -49,7 +49,7 @@ resource "aws_instance" "ec2_instance" {
   //user_data            = file("installed_script.sh")
 
   tags = {
-    Name = "utrains devos jenkins project"
+    Name = "utrains-jenkins-server"
   }
 }
 # an empty resource block
