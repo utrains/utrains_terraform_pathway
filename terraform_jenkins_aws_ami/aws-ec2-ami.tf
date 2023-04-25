@@ -13,7 +13,7 @@ resource "aws_instance" "jenkins_ec2_instance" {
   key_name               = aws_key_pair.instance_key.key_name
 
   tags = {
-    Name = "utrains-jenkins-server"
+    Name = "jenkins-server"
     Owner = "Hermann90"
   }
 }
@@ -21,13 +21,13 @@ resource "aws_instance" "jenkins_ec2_instance" {
 
 # launch the Nexus instance using ami
 resource "aws_instance" "nexus_ec2_instance" {
-  ami                    = "ami-0d39e2dff94ea9f60"
+  ami                    = "ami-0de51fc0d31c1588c"
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.nexus_security_gp.id]
   key_name               = aws_key_pair.instance_key.key_name
 
   tags = {
-    Name = "utrains-jenkins-server"
+    Name = "nexus-server"
     Owner = "Hermann90"
   }
 }
