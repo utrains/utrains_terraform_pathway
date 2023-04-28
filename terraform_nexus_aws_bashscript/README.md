@@ -12,7 +12,5 @@ terraform apply --auto-approve
 ```
 terraform destroy --auto-approve
 ```
-## Get the admin password of nexus server 
-```
-sudo cat ~/nexus/sonatype-work/nexus3/admin.password
-```
+## Nexus credendantials ( what is stored in your image)
+
