@@ -1,6 +1,6 @@
 # configured aws provider with proper credentials
 provider "aws" {
-  region    = "us-east-1"
+  region    = var.aws_region
   profile   = "default"
 }
 
@@ -37,8 +37,13 @@ resource "aws_instance" "qa_serveur" {
   count = var.qa_serveur ? 1 : 0
   ami   = data.aws_ami.ami.id
   instance_type = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.qa_uat_security_gp.id]
   key_name = aws_key_pair.instance_key.key_name
-
+  user_data            = file("qa_uat.sh")
+  tags = {
+    Name = "qa-server"
+    Owner = "Hermann90"
+  }
   # other instance configuration here
 }
 
@@ -46,7 +51,13 @@ resource "aws_instance" "uat_serveur" {
   count = var.uat_serveur ? 1 : 0
   ami   = data.aws_ami.ami.id
   instance_type = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.qa_uat_security_gp.id]
   key_name = aws_key_pair.instance_key.key_name
+  user_data            = file("qa_uat.sh")
+   tags = {
+    Name = "uat-server"
+    Owner = "Hermann90"
+  }
   # other instance configuration here
 }
 # an empty resource block
