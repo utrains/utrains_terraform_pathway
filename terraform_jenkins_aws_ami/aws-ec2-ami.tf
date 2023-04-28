@@ -30,8 +30,25 @@ resource "aws_instance" "nexus_ec2_instance" {
     Name = "nexus-server"
     Owner = "Hermann90"
   }
+  
 }
 
+resource "aws_instance" "qa_serveur" {
+  count = var.qa_serveur ? 1 : 0
+  ami   = data.aws_ami.ami.id
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.instance_key.key_name
+
+  # other instance configuration here
+}
+
+resource "aws_instance" "uat_serveur" {
+  count = var.uat_serveur ? 1 : 0
+  ami   = data.aws_ami.ami.id
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.instance_key.key_name
+  # other instance configuration here
+}
 # an empty resource block
 resource "null_resource" "name" {
   # ssh into the ec2 instance 
@@ -39,8 +56,8 @@ resource "null_resource" "name" {
     type        = "ssh"
     user        = "ec2-user"
     private_key = file(local_file.ssh_key.filename)
-    hosts        = [aws_instance.jenkins_ec2_instance.public_ip, aws_instance.nexus_ec2_instance.public_ip]
+    hosts        = [aws_instance.jenkins_ec2_instance.public_ip, aws_instance.nexus_ec2_instance.public_ip, aws_instance.qa_serveur.public_ip, aws_instance.uat_serveur.public_ip]
   }
   # wait for ec2 to be created
-  depends_on = [aws_instance.jenkins_ec2_instance, aws_instance.nexus_ec2_instance]
+  depends_on = [aws_instance.jenkins_ec2_instance, aws_instance.nexus_ec2_instance, aws_instance.uat_serveur, aws_instance.qa_serveur]
 }
