@@ -42,5 +42,5 @@ resource "null_resource" "name" {
     hosts        = [aws_instance.jenkins_ec2_instance.public_ip, aws_instance.nexus_ec2_instance.public_ip]
   }
   # wait for ec2 to be created
-  depends_on = [aws_instance.jenkins_ec2_instance, aws_instance.nexus_ec2_instance]
+  depends_on = [aws_instance.jenkins_ec2_instance]
 }
