@@ -28,3 +28,9 @@ variable uat_serveur {
   default     = false
   type        = bool
 }
+variable nexus_serveur {
+description = "if nexus server can be created"
+  default     = false
+  type        = bool
+}
+
