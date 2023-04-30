@@ -21,6 +21,7 @@ resource "aws_instance" "jenkins_ec2_instance" {
 
 # launch the Nexus instance using ami
 resource "aws_instance" "nexus_ec2_instance" {
+  count = var.nexus_serveur ? 1 : 0
   ami                    = "ami-01a6a7043069d0a49"
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.nexus_security_gp.id]
