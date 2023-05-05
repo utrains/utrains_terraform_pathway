@@ -17,18 +17,18 @@ variable aws_key {
   type        = string
 }
 
-variable qa_serveur {
+variable qa_server {
   description = "if qa server can be created"
   default     = false
   type        = bool
 }
 
-variable uat_serveur {
+variable uat_server {
   description = "if qa server can be created"
   default     = false
   type        = bool
 }
-variable nexus_serveur {
+variable nexus_server {
 description = "if nexus server can be created"
   default     = false
   type        = bool
