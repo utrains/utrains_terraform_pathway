@@ -18,10 +18,10 @@ output "nexus_url" {
 
 # print the url of the jenkins server
 output "ssh_connection_uat_command" {
-  value     = var.uat_server ? join("", ["ssh -i instance_key_pair.pem ec2-user@", aws_instance.uat_serveur[0].public_dns]) : null  
+  value     = var.uat_server ? join("", ["ssh -i instance_key_pair.pem ec2-user@", aws_instance.uat_server[0].public_dns]) : null  
 }
 
 # print the url of the qa server
 output "ssh_connection_qa_command" {
-  value     = var.qa_server ? join("", ["ssh -i instance_key_pair.pem ec2-user@", aws_instance.qa_serveur[0].public_dns]) : null  
+  value     = var.qa_server ? join("", ["ssh -i instance_key_pair.pem ec2-user@", aws_instance.qa_server[0].public_dns]) : null  
 }
