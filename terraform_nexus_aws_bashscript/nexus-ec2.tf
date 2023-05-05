@@ -69,7 +69,7 @@ resource "aws_instance" "ec2_instance" {
   # user_data            = file("install-nexus.sh")
 
   tags = {
-    Name = "utrains Nexus Server and ssh security group"
+    Name = "Nexus-server"
     owner = "Hermann90"
   }
 }
