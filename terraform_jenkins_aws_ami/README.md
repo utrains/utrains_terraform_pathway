@@ -3,4 +3,4 @@ This code allows to create in aws a jenkins server so several plugins, java mave
 
 ## Nexus AMI Login :
 - user : admin
-- pwd : school1
+- pwd : devops
